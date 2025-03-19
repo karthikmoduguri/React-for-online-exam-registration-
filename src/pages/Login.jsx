@@ -1,15 +1,87 @@
-import React, { useState } from "react";
-
+import  { useState } from "react";
+import {useNavigate} from "react-router-dom"
+import axios from "axios";
 const LoginPage = () => {
     const [email, setEmail] = useState("");
+    const [error, setError] = useState("");
     const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
-
-    const handleSubmit = (e) => {
+    //const navigate=useNavigate();
+    const handleSubmit = async(e) => {
         e.preventDefault();
         console.log("Email:", email);
         console.log("Password:", password);
+        setError("");
+        setLoading(true);
+    
+        try {
+          const response = await axios.post("/api/v1/user/login", {email,password}, {
+            withCredentials: true,
+          })
+    
+          console.log("Login Response:", response.data);
+          console.log('hey') // ✅ Debug log
+          if (response.data && response.data.user) {
+            const { message, user } = response.data;
+            const { _id, name, email, role, token } = user;
+          
+            console.log(message); // "Login successful"
+            console.log(_id); // "67c8066987ddf5050458ea73"
+            console.log(name); // "Sai Sourya"
+            console.log(email); // "saisourya678@gmail.com"
+            console.log(role); // "user"
+            console.log(token); // JWT Token
+          } else {
+            console.log("Invalid response format");
+          }
+          
+    
+          alert(`Welcome, ${response.data.user.name}!`);
+    
+          // ✅ Redirect based on role
+         
+        } catch (error) {
+            alert('invalid id or pass')
+          console.error("Login Error:", error.response?.data || error);
+          setError(error.response?.data?.message || "Something went wrong");
+        } finally {
+          setLoading(false);
+        }
     };
+    // const handleLogin = async (e) => {
+    //     e.preventDefault();
+    //     setError("");
+    //     setLoading(true);
+    
+    //     try {
+    //       const response = await axios.post("/api/v1/user/login", loginDetails, {
+    //         withCredentials: true,
+    //       });
+    
+    //       console.log("Login Response:", response.data); // ✅ Debug log
+    
+    //       // ✅ Corrected destructuring
+    //       const user = response.data.data; // Correct user data extraction
+    //       const token = response.data.token || null; // Handle missing token
+    
+    //       // ✅ Store user & token safely
+    //       localStorage.setItem("user", JSON.stringify(user));
+    //       if (token) {
+    //         localStorage.setItem("token", token);
+    //       }
+    
+    //       alert(`Welcome, ${user.name}!`);
+    
+    //       // ✅ Redirect based on role
+         
+    //     } catch (error) {
+    //       console.error("Login Error:", error.response?.data || error);
+    //       setError(error.response?.data?.message || "Something went wrong");
+    //     } finally {
+    //       setLoading(false);
+    //     }
+    //   };
 
     return (
         <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh", background: "#f4f4f4" }}>
