@@ -19,6 +19,7 @@ const Navbar = () => {
           <li><Link to="/register-exam" className="hover:underline">Register Exam</Link></li>
           <li><Link to="/exam-schedule" className="hover:underline">Exam Schedule</Link></li>
           <li><Link to="/login" className="hover:underline">Login</Link></li>
+          <li><Link to="/all-exams" className="hover:underline">All Exams list</Link></li>
         </ul>
 
         {/* Mobile Menu Button */}

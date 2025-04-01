@@ -1,0 +1,88 @@
+/* 🌟 Global Styling */
+.exams-container {
+    text-align: center;
+    padding: 40px 20px;
+    font-family: "Poppins", sans-serif;
+    /*background-color: #f4f7f6;*/
+  }
+  
+  /* 🏷️ Category Buttons */
+  .category-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+  
+  .category-btn {
+    padding: 12px 24px;
+    font-size: 16px;
+    border: 2px solid transparent;
+    background-color: #e0e0e0;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border-radius: 25px;
+  }
+  
+  .category-btn:hover {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .category-btn.active {
+    background-color: #007bff;
+    color: white;
+    border: 2px solid #0056b3;
+  }
+  
+  /* 📦 Exam Cards Grid */
+  .exam-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 10px;
+  }
+  
+  /* 📝 Individual Exam Cards */
+  .exam-box {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .exam-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .exam-box h3 {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .exam-box p {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .exam-box strong {
+    color: #111;
+  }
+  
+  /* 🎨 Responsive */
+  @media (max-width: 768px) {
+    .category-container {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .exam-grid {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+  }
+  
