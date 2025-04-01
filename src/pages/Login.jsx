@@ -16,7 +16,11 @@ const LoginPage = () => {
         setLoading(true);
     
         try {
+<<<<<<< HEAD
           const response = await axios.post("http://localhost:3700/api/v1/user/login", {email,password}, {
+=======
+          const response = await axios.post("/api/v1/user/login", {email,password}, {
+>>>>>>> 0b10aff56eba2447e9d1b50d20d227624c69051a
             withCredentials: true,
           })
     
@@ -32,7 +36,10 @@ const LoginPage = () => {
             console.log(email); // "saisourya678@gmail.com"
             console.log(role); // "user"
             console.log(token); // JWT Token
+<<<<<<< HEAD
             localStorage.setItem("token",token);
+=======
+>>>>>>> 0b10aff56eba2447e9d1b50d20d227624c69051a
           } else {
             console.log("Invalid response format");
           }
@@ -72,7 +79,11 @@ const LoginPage = () => {
     //         localStorage.setItem("token", token);
     //       }
     
+<<<<<<< HEAD
     //       alert(Welcome, ${user.name}!);
+=======
+    //       alert(`Welcome, ${user.name}!`);
+>>>>>>> 0b10aff56eba2447e9d1b50d20d227624c69051a
     
     //       // ✅ Redirect based on role
          
@@ -137,4 +148,8 @@ const LoginPage = () => {
     );
 };
 
+<<<<<<< HEAD
 export default LoginPage;
+=======
+export default LoginPage;
+>>>>>>> 0b10aff56eba2447e9d1b50d20d227624c69051a
